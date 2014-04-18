@@ -326,21 +326,14 @@ class Extra_Widget_Links_Icon extends WP_Widget {
 			array(
 				'value' => 'icon-link-rss',
 				'label' => 'Rss',
-			),
+			)
 		);
+		$icons = apply_filters('extra-widget-links-icon-list', $icons);
 
 		?>
 		<div class="extra-widget-links-icon-item extra-bloc<?php echo ($link == null) ? ' extra-widget-links-icon-template' : ''; ?>">
-			<div class="button button-secondary extra-widget-links-icon-list-handle"><span class="icon-admin icon-admin-grip"></span></div>
+			<div class="extra-widget-links-icon-list-handle"><span class="icon-admin icon-admin-grip"></span></div>
 			<button class="button button-primary right extra-widget-links-icon-remove-button"><span class="icon-admin icon-admin-remove"></span></button>
-			<p>
-				<label for="<?php echo $this->get_field_id('link_title'.$field_id_suffix); ?>"><?php _e("Titre :", "extra-widget-links-icon"); ?></label>
-				<input class="widefat" id="<?php echo $this->get_field_id('link_title'.$field_id_suffix); ?>" type="text" name="<?php echo $this->get_field_name('link_title'.$fields_name_suffix); ?>" value="<?php echo ($link !== null) ? $link['link_title'] : ''; ?>"/>
-			</p>
-			<p>
-				<label for="<?php echo $this->get_field_id('link_url'.$field_id_suffix); ?>"><?php _e("Url :", "extra-widget-links-icon"); ?></label>
-				<input class="widefat" id="<?php echo $this->get_field_id('link_url'.$field_id_suffix); ?>" type="text" name="<?php echo $this->get_field_name('link_url'.$fields_name_suffix); ?>" value="<?php echo ($link !== null) ? $link['link_url'] : ''; ?>"/>
-			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id('link_icon'.$field_id_suffix); ?>"><?php _e("Icône :", "extra-widget-links-icon"); ?></label>
 				<select id="<?php echo $this->get_field_id('link_icon'.$field_id_suffix); ?>" name="<?php echo $this->get_field_name('link_icon'.$fields_name_suffix); ?>">
@@ -349,6 +342,14 @@ class Extra_Widget_Links_Icon extends WP_Widget {
 						<option value="<?php echo $icon['value']; ?>"<?php echo ($link !== null && $link['link_icon'] == $icon['value']) ? ' selected' : ''; ?>><?php echo $icon['label']; ?></option>
 					<?php endforeach; ?>
 				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('link_url'.$field_id_suffix); ?>"><?php _e("Url :", "extra-widget-links-icon"); ?></label>
+				<input class="widefat" id="<?php echo $this->get_field_id('link_url'.$field_id_suffix); ?>" type="text" name="<?php echo $this->get_field_name('link_url'.$fields_name_suffix); ?>" value="<?php echo ($link !== null) ? $link['link_url'] : ''; ?>"/>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('link_title'.$field_id_suffix); ?>"><?php _e("Titre :", "extra-widget-links-icon"); ?></label>
+				<input class="widefat" id="<?php echo $this->get_field_id('link_title'.$field_id_suffix); ?>" type="text" name="<?php echo $this->get_field_name('link_title'.$fields_name_suffix); ?>" value="<?php echo ($link !== null) ? $link['link_title'] : ''; ?>"/>
 			</p>
 		</div>
 		<?php

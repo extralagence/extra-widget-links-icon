@@ -14,5 +14,5 @@ $links = $instance['links'];
 ?>
 
 <?php foreach($links as $link) : ?>
-	<a href="<?php echo $link['link_url']; ?>"><span class="icon-link <?php echo $link['link_icon']; ?>"></span><?php echo $link['link_title']; ?></a>
+	<a href="<?php echo $link['link_url']; ?>" title="<?php echo $link['link_title']; ?>"><span class="icon-link <?php echo $link['link_icon']; ?>"></span><?php echo $link['link_title']; ?></a>
 <?php endforeach; ?>

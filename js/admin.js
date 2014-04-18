@@ -19,9 +19,16 @@
 			shortName = shortName.substr(1, shortName.length-2);
 			name = name.replace(shortName, (shortName+'('+lastIndex+')'));
 
-			console.log(name);
-
 			$input.attr('name', name);
+		}
+
+		function enableDrag() {
+			$('.extra-widget-links-icon-list').sortable({
+				forcePlaceholderSize: true,
+				placeholder: 'extra-widget-links-icon-list-placeholder',
+				opacity: 1,
+				handle: '.extra-widget-links-icon-list-handle'
+			});
 		}
 
 
@@ -59,15 +66,12 @@
 			}
 		});
 
-		$('.extra-widget-links-icon-list').sortable({
-			forcePlaceholderSize: true,
-			placeholder: 'extra-widget-links-icon-list-placeholder',
-			opacity: 1,
-			handle: '.extra-widget-links-icon-list-handle'
+		$(document).ajaxSuccess(function(e, xhr, settings) {
+			var widget_id_base = 'my-widget-id-base';
+			if(settings.data && settings.data.search('action=save-widget') != -1 && settings.data.search('id_base=extra-widget-links-icon') != -1) {
+				//do something
+				enableDrag();
+			}
 		});
-
-//		$(document).on('click', '.extra-widget-links-icon-list-handle', function (event) {
-//			event.preventDefault();
-//		});
 	});
 }(jQuery));
