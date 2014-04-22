@@ -73,5 +73,7 @@
 				enableDrag();
 			}
 		});
+
+		enableDrag();
 	});
 }(jQuery));
